@@ -48,16 +48,16 @@
       <img src="new_images/201_project_name.png" title="100px" alt="프로젝트 생성하기"> <br> 
 <br>
 
-3. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고 **Create network attachment definition**을 클릭 합니다.
+2. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고 **Create network attachment definition**을 클릭 합니다.
 
-   <img src="new_images/74_networkattachment.png" title="100px" alt="Network Attachment Definition 대시보드"> <br> 
+   <img src="new_images/202_networkattachment.png" title="100px" alt="Network Attachment Definition 대시보드"> <br> 
 
 > [!IMPORTANT]
-> 프로젝트 `vmexamples`를 선택합니다.
+> 프로젝트 `vmbetwork`를 선택합니다.
 <br>
 
-3. 다음과 같이 `vmexamples` 프로젝트에 대한 설정을 **Edit YAML**을 선택하여 아래 내용으로 대체한 후, **Create**를 클릭 합니다.
-    <img src="new_images/75_nework_yaml_update.png" title="100px" alt="Network Attachment Definition YAML"> <br> 
+3. 다음과 같이 `vmnetwork` 프로젝트에 대한 설정을 **Edit YAML**을 선택하여 아래 내용으로 대체한 후, **Create**를 클릭 합니다.
+    <img src="new_images/203_nework_yaml_update.png" title="100px" alt="Network Attachment Definition YAML"> <br> 
    아래 내용을 복사하여 내용을 대체합니다.
 
 ```yaml
@@ -67,19 +67,20 @@ metadata:
   annotations:
     description: l2 connection for vms
   name: vlan0
-  namespace: vmexamples
+  namespace: vmnetwork
 spec:
-  config: |-
+  config: |2
     {
-      "cniVersion": "0.4.0",
-      "name": "vm-network",
-      "type": "ovn-k8s-cni-overlay",
-      "topology": "localnet",
-      "netAttachDefName": "vmexamples/vlan0"
+            "cniVersion": "0.4.0", 
+            "name": "vm-network", 
+            "type": "ovn-k8s-cni-overlay", 
+            "topology": "localnet", 
+            "subnets": "192.168.100.0/24", 
+            "netAttachDefName": "vmnetwork/vlan0" 
     }
 ```
 
-   <img src="new_images/74_networkattachment_edit_yaml.png" title="100px" alt="Network Attachment Definition 생성"> <br> 
+   <img src="new_images/204_networkattachment_edit_yaml.png" title="100px" alt="Network Attachment Definition 생성"> <br> 
 
    호스트의 단일 리눅스 브리지에는 다양한 VLAN이 있을 수 있습니다. 이 시나리오에서는 별도의 호스트 인터페이스와 브리지가 아닌 각 항목에 대한 Network Attachment Definition만 생성하면 됩니다.
    
@@ -87,9 +88,9 @@ spec:
 > 위 양식에는 VLAN 태그를 할당해야 하는 네트워크에 연결할 때 사용되는 `VLAN Tag Number`에 대한 입력이 있습니다. 이 실습에서는 태그가 지정되지 않은 네트워크를 사용하므로 여기에는 VLAN 번호가 필요하지 않습니다.
 <br>
 
-3. *Network Attachment Definition*의 세부사항을 조사하십시오. `vmexamples` 프로젝트에서 생성되었기 때문에 다른 프로젝트에서는 사용할 수 없습니다.
+3. *Network Attachment Definition*의 세부사항을 조사하십시오. `vmnetwork` 프로젝트에서 생성되었기 때문에 다른 프로젝트에서는 사용할 수 없습니다.
 
-   <img src="new_images/76_network_details.png" title="100px" alt="생성된 Network Attachment Definition 확인"> <br>
+   <img src="new_images/205_network_details.png" title="100px" alt="생성된 Network Attachment Definition 확인"> <br>
 <br>
 <br>
 
