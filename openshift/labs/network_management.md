@@ -2,7 +2,6 @@
 
 목차
 1. [네트워크 관리 소개](./network_management.md#1-네트워크-관리-소개)<br>
-2. [프로젝트 생성](./network_management.md#2-프로젝트-생성)<br>
 2. [Network Attachment Definition 생성](./network_management.md#2-network-attachment-definition-생성)<br>
 3. [외부 네트워크 가상머신 연결](./network_management.md#3-외부-네트워크-가상머신-연결)<br>
 4. [요약](./network_management.md#4-요약)
@@ -31,32 +30,6 @@
 <br>
 <br>
 
-
-## 2. 프로젝트 생성
-
-기본적으로 모든 가상머신은 오픈시프트 SDN(소프트웨어 정의 네트워크)에 연결되어 있어 다른 가상머신 및 오픈시프트 기본 애플리케이션을 포함하여 오픈시프트 클러스터의 다른 워크로드에서 액세스할 수 있습니다.
-
-* SDN은 클러스터에 가상머신 또는 Pod로 배포되는지 여부에 관계없이 제어된 방식으로 애플리케이션을 추상화, 연결 및 노출하기 위한 추가 기능을 제공합니다. 해당 기능에는 오픈시프트의 `서비스` 및 `경로`가 포함됩니다.
-* 오픈시프트의 네트워크 정책 엔진을 사용하면 가상머신 사용자 또는 관리자가 개별 가상머신 또는 전체 프로젝트/네임스페이스 간의 네트워크 트래픽을 허용하거나 거부하는 규칙을 생성할 수 있습니다.
-
-그러나 필요한 경우 가상머신은 VLAN과 같은 하나 이상의 외부 네트워크에 직접 연결할 수도 있습니다. 이는 SDN에 추가되는 기능입니다. 즉, 예를 들어 관리자는 외부 IP 주소에서 가상머신에 연결할 수 있지만 애플리케이션은 SDN을 통해 오픈시프트 가상화에서 호스팅하는 다른 가상머신과 통신합니다.
-
-높은 수준에서는 모드 4(LACP) 본드 생성 및 맨 위에 리눅스 브리지 생성과 같은 호스트 네트워킹을 구성하여 이를 수행합니다. 이 워크숍 세그먼트에서는 가상머신이 해당 브리지에 연결되어 외부 네트워크에 직접 연결할 수 있도록 하는 **Network Attachment Definitions**을 생성하는 프로세스의 다음 단계를 안내합니다.
-
-> [!NOTE]
-> 오픈시프트 환경은 가상머신이 연결할 각 컴퓨팅 노드에 리눅스 브리지로 이미 구성되어 있으므로 외부 네트워크 리소스와 쉽게 연결할 수 있습니다.
-
-<br>
-
-**목표**
-* Network Attachment Definitions 만들기
-* 가상머신을 외부 네트워크에 연결
-<br>
-<br>
-
-
-
-
 ## 2. Network Attachment Definition 생성
 
 가상머신에서 리눅스 브리지를 사용하려면 **Network Attachment Definition**를 생성해야 합니다. 이는 오픈시프트에 네트워크에 대해 알려주고 가상머신이 네트워크에 연결할 수 있도록 허용합니다. Network Attachment Definition은 `default` 프로젝트에서 생성되지 않는 한 생성된 프로젝트/네임스페이스에만 적용됩니다. 이를 통해 관리자는 자신의 가상머신들을 관리할 수 있는 액세스 권한이 있는 사용자가 사용할 수 있는 네트워크와 사용할 수 없는 네트워크를 제어할 수 있습니다. Network Attachment Definition이 생성되면 가상머신에서 네트워크 어댑터를 구성할 때 사용할 수 있습니다.
@@ -66,7 +39,16 @@
 
 <br>
 
-1. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고 **Create network attachment definition**을 클릭 합니다.
+1. 가상머신을 외부 네트워크에 연결하기 전에 새 프로젝트를 생성합니다.
+
+   1. **프로젝트: 모든 프로젝트**를 클릭한 다음 **프로젝트 만들기**를 클릭합니다.
+      <img src="new_images/05_project.png" title="100px" alt="모든 프로젝트 선택"> <br> 
+
+   2. **이름** 필드에 `vmnetwork`를 입력하여 프로젝트 이름을 입력한 다음 **만들기** 를 클릭합니다.
+      <img src="new_images/06_project_name.png" title="100px" alt="프로젝트 생성하기"> <br> 
+<br>
+
+3. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고 **Create network attachment definition**을 클릭 합니다.
 
    <img src="new_images/74_networkattachment.png" title="100px" alt="Network Attachment Definition 대시보드"> <br> 
 
@@ -74,7 +56,7 @@
 > 프로젝트 `vmexamples`를 선택합니다.
 <br>
 
-2. 다음과 같이 `vmexamples` 프로젝트에 대한 설정을 **Edit YAML**을 선택하여 아래 내용으로 대체한 후, **Create**를 클릭 합니다.
+3. 다음과 같이 `vmexamples` 프로젝트에 대한 설정을 **Edit YAML**을 선택하여 아래 내용으로 대체한 후, **Create**를 클릭 합니다.
     <img src="new_images/75_nework_yaml_update.png" title="100px" alt="Network Attachment Definition YAML"> <br> 
    아래 내용을 복사하여 내용을 대체합니다.
 
