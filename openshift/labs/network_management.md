@@ -53,7 +53,7 @@
    <img src="new_images/202_networkattachment.png" title="100px" alt="Network Attachment Definition 대시보드"> <br> 
 
 > [!IMPORTANT]
-> 프로젝트 `vmbetwork`를 선택합니다.
+> 프로젝트 `vmnetwork`를 선택합니다.
 <br>
 
 3. 다음과 같이 `vmnetwork` 프로젝트에 대한 설정을 **Edit YAML**을 선택하여 아래 내용으로 대체한 후, **Create**를 클릭 합니다.
