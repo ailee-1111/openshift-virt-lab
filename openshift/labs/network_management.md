@@ -42,10 +42,10 @@
 1. 가상머신을 외부 네트워크에 연결하기 전에 새 프로젝트를 생성합니다.
 
    1. **프로젝트: 모든 프로젝트**를 클릭한 다음 **프로젝트 만들기**를 클릭합니다.
-      <img src="new_images/05_project.png" title="100px" alt="모든 프로젝트 선택"> <br> 
+      <img src="new_images/200_project.png" title="100px" alt="모든 프로젝트 선택"> <br> 
 
    2. **이름** 필드에 `vmnetwork`를 입력하여 프로젝트 이름을 입력한 다음 **만들기** 를 클릭합니다.
-      <img src="new_images/06_project_name.png" title="100px" alt="프로젝트 생성하기"> <br> 
+      <img src="new_images/201_project_name.png" title="100px" alt="프로젝트 생성하기"> <br> 
 <br>
 
 3. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고 **Create network attachment definition**을 클릭 합니다.
