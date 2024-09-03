@@ -99,8 +99,7 @@ spec:
 1.**vmnetwork** 프로젝트를 선택합니다.
    <img src="new_images/206_vmnetwork프로젝트.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br> 
-  
-  
+   
 2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
    <img src="new_images/207_fedora03_add.png" title="100px" alt="Fedora03 생성"> <br>
 <br>
@@ -109,46 +108,53 @@ spec:
    <img src="new_images/208_fedora03_add-2.png" title="100px" alt="Fedora03 생성-2"> <br>
 <br>
 
-4. 
-6. 위에서 생성한 `vmexamples/vlan01` 네트워크 연결 정의를 추가하고, **Save**를 클릭합니다.
+4. **VirtualMachine name**에 **fedora03**을 입력한 후, **Customize VirtualMachine** 버튼을 클릭합니다.
+   <img src="new_images/209_fedora03_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
+<br>
 
-   <img src="new_images/78_fedora02_network_add_vlan.png" title="100px" alt="네트워크 인터페이스 세부 설정"> <br>
+5. **Add Network interface** 를 클릭합니다.
+
+   <img src="new_images/210_fedora03_add-4.png" title="100px" alt="fedora03 생성-4"> <br>
 <br>
 
 
-7. **Actions** 메뉴의 *Restart*를 클릭하여 가상머신을 다시 시작합니다. 
+6. **Network** 메뉴의 **vmnetwork/vlan0**을 선택한 후, **Save**를 클릭합니다. 
 
-   <img src="new_images/79_vm_restart.png" title="100px" alt="가상머신 재시작"> <br>
+   <img src="new_images/211_fedora03_add-5.png" title="100px" alt="fedora03 생성-5"> <br>
+<br>
+
+7. **Create VirtualMachine**을 클릭합니다. 
+
+   <img src="new_images/212_fedora03_add-6.png" title="100px" alt="fedora03 생성-6"> <br>
 <br>
 
 
-8. 재부팅 후 **Overview** 탭으로 이동합니다.
+8. fedora03 VM이 생성 된 후 **Overview** 탭으로 이동합니다.
 
-   `eth1` 인터페이스는 플랫 네트워크(`192.168.3.x/24`)에서 IP 주소를 얻습니다. 해당 네트워크에는 IP를 제공하는 DHCP 서버가 있습니다.
+   `eth1` 인터페이스는 플랫 네트워크(`192.168.100.x/24`)에서 IP 주소를 얻습니다. 해당 네트워크에는 IP를 제공하는 DHCP 서버가 있습니다.
 
-   <img src="new_images/80_fedora02_vm_network.png" title="100px" alt="가상머신 네트워크 인터페이스 확인"> <br>
+   <img src="new_images/213_fedora03-overview.png" title="100px" alt="가상머신 네트워크 인터페이스 확인"> <br>
 <br>
-
 9. **Console** 탭에서도 추가된 인터페이스를 확인 할 수 있습니다.
 
-   <img src="new_images/82_fedora02_console_ip.png" title="100px" alt="가상머신 Console 확인"> <br>
+   <img src="new_images/214_fedora03_console_ip.png" title="100px" alt="가상머신 Console 확인"> <br>
 <br>
 
-10. (선택 사항) fedora 계정/패스워드로 접속허용을 위해 sshd 설정을 변경합니다.
+9. (선택 사항) fedora 계정/패스워드로 접속허용을 위해 sshd 설정을 변경합니다.
    **Console** 탭으로 이동하여 터미널에 접속한 후, sudo로 계정을 스위치 합니다.
 
    ```bash
    sudo -i
    ````
    
-   <img src="new_images/177_fedora_console.png" title="100px" alt="가상머신 Console 접속"> <br>
+   <img src="new_images/215_fedora_console.png" title="100px" alt="가상머신 Console 접속"> <br>
 <br>
 
    **sshd** 설정 변경을 위해 설정 파일을 vi로 오픈합니다.
    ```bash
    vi /etc/ssh/sshd_config
    ```
-   <img src="new_images/178_sshd_config.png" title="100px" alt="가상머신 sshd 설정 파일"> <br>
+   <img src="new_images/216_sshd_config.png" title="100px" alt="가상머신 sshd 설정 파일"> <br>
 <br>
 
    설정 파일에 **PasswordAuthentication yes** 을 추가하거나 주석을 해제합니다.
@@ -156,25 +162,67 @@ spec:
     PasswordAuthentication yes
    ```
 
-   <img src="new_images/179_sshd_config_update.png" title="100px" alt="가상머신 sshd 옵션 추가"> <br>
+   <img src="new_images/217_sshd_config_update.png" title="100px" alt="가상머신 sshd 옵션 추가"> <br>
 <br>
 
-11. 설정을 저장하고, 반영을 위해 sshd 서비스를 재 시작합니다.
+
+10. **/etc/ssh/sshd_config.d/50-cloud-init.conf** 파일의 설정을 확인합니다.
+      해당 설정이 override될 수 있으므로 확인합니다.
+      ```bash
+      cd /etc/ssh/sshd_config.d
+      ```
+      <img src="new_images/218_sshd_config_d.png" title="100px" alt="가상머신의 SSH 설정 확인"> <br>
+
+11. **50-cloud-init.conf** 파일을 열어서 **PasswordAuthentication** 값을 **yes**로 변경합니다.
+      ```bash
+      PasswordAuthentication yes
+      ```
+      <img src="new_images/219_sshd_config_update.png" title="100px" alt="가상머신의 SSH 설정 업데이트"> <br>
+      
+
+12. 설정을 저장하고, 반영을 위해 sshd 서비스를 재 시작합니다.
    ```bash
    systemctl restart sshd
    ```
-   <img src="new_images/180_sshd_service_restart.png" title="100px" alt="가상머신 sshd 재 시작"> <br>
+   <img src="new_images/220_sshd_service_restart.png" title="100px" alt="가상머신 sshd 재 시작"> <br>
 <br>
 
-11. 배스천 호스트를 사용하여 가상머신의 외부 연결을 확인합니다. 이 워크숍 시작 시 공유된 실습 환경 자료에 제공된 대로 SSH를 통해 호스트에 연결합니다. <br>
-   사전에 Hypervisor 서버에 cockpit을 설치해 두었으므로 웹 콘솔을 이용하여 이를 이용하여 베스천 호스트에 연결할 수 있습니다.
+
+## 4. 외부 네트워크를 사용하는 가상머신 추가 배포 및 ssh 접속 확인
+
+
+1.**vmnetwork** 프로젝트를 선택합니다.
+   <img src="new_images/206_vmnetwork프로젝트.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
+<br> 
    
-   1. 웹 브라우저에서 제공 받은 `hypervisor.khsqt.dynamic.redhatworkshops.io` 주소를 이용하여 `https://hypervisor.khsqt.dynamic.redhatworkshops.io:9090`으로 접속합니다. <br>
-      제공받은 주소는 다를 수 있으므로 대체해서 접속해야 합니다.
+2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
+   <img src="new_images/207_fedora03_add.png" title="100px" alt="Fedora03 생성"> <br>
+<br>
 
-      <img src="new_images/83_cockpit.png" title="100px" alt="가상머신 Cockpit 연결"> <br>
+3. 템플릿 검색창에 **'Fedora'** 를 검색하여 **Fedora VM Network** 템플릿을 선택합니다.
+   <img src="new_images/208_fedora03_add-2.png" title="100px" alt="Fedora03 생성-2"> <br>
+<br>
 
-   2. 터미널 메뉴를 선택하고, 자신의 IP를 확인한 후, 서버에 접속합니다.
+4. **VirtualMachine name**에 **fedora03**을 입력한 후, **Customize VirtualMachine** 버튼을 클릭합니다.
+   <img src="new_images/209_fedora03_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
+<br>
+
+5. **Add Network interface** 를 클릭합니다.
+
+   <img src="new_images/210_fedora03_add-4.png" title="100px" alt="fedora03 생성-4"> <br>
+<br>
+
+
+6. **Network** 메뉴의 **vmnetwork/vlan0**을 선택한 후, **Save**를 클릭합니다. 
+
+   <img src="new_images/211_fedora03_add-5.png" title="100px" alt="fedora03 생성-5"> <br>
+<br>
+
+7. **Create VirtualMachine**을 클릭합니다. 
+
+   <img src="new_images/212_fedora03_add-6.png" title="100px" alt="fedora03 생성-6"> <br>
+<br>
+
 
    3. IP를 자신의 IP로 대체하여 ssh 접속 명령어를 입력하고, 비밀번호(ocpVirtIsGre@t)를 입력합니다.
       
@@ -192,27 +240,6 @@ spec:
       실행 결과는 다음과 같습니다.
       <img src="new_images/181_ssh_connect.png" title="100px" alt="가상머신의 SSH 연결 확인"> <br>
 
-   4. ssh 접속 시 **Permission denied** 에러가 발생하는 경우에는 다음을 확인합니다.
-      <img src="new_images/183_ssh_permission_denied.png" title="100px" alt="가상머신의 SSH 연결 에러 발생"> <br>
-      
-      **/etc/ssh/sshd_config.d/50-cloud-init.conf** 파일의 설정을 확인합니다.
-      해당 설정이 override될 수 있으므로 확인합니다.
-      ```bash
-      cd /etc/ssh/sshd_config.d
-      ```
-      <img src="new_images/184_sshd_config_d.png" title="100px" alt="가상머신의 SSH 설정 확인"> <br>
-
-   5. **50-cloud-init.conf** 파일을 열어서 **PasswordAuthentication** 값을 **yes**로 변경합니다.
-      ```bash
-      PasswordAuthentication yes
-      ```
-      <img src="new_images/185_sshd_config_update.png" title="100px" alt="가상머신의 SSH 설정 업데이트"> <br>
-      
-   7. 설정 반영을 위해 sshd를 재 시작 합니다.
-      ```bash
-      systemctl restart sshd
-      ```
-       <img src="new_images/186_sshd_restart.png" title="100px" alt="가상머신의 SSH 재 시작"> <br>
        
    8. 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
       ```bash
