@@ -97,7 +97,7 @@ spec:
 ## 3. 외부 네트워크를 사용하는 가상머신 배포
 
 1. **vmnetwork** 프로젝트를 선택합니다.
-   <img src="new_images/206_vmnetwork프로젝트.png" title="50px" alt="vmnetwork 프로젝트 확인"> <br>
+   <img src="new_images/206_vmnetwork_project.png" title="50px" alt="vmnetwork 프로젝트 확인"> <br>
 <br> 
   
 2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
@@ -192,8 +192,8 @@ spec:
 
 
 1.**vmnetwork** 프로젝트를 선택합니다.
-   <img src="new_images/206_vmnetwork프로젝트.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
-<br> 
+   <img src="new_images/206_vmnetwork_project.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
+<br>
    
 2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
    <img src="new_images/207_fedora03_add.png" title="100px" alt="Fedora03 생성"> <br>
