@@ -112,7 +112,7 @@ spec:
    <img src="new_images/209_fedora03_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
 <br>
 
-5. **Add Network interface** 를 클릭합니다.
+5. **Network interfaces** 탭을 클릭 후 **Add Network interface** 를 클릭합니다.
 
    <img src="new_images/210_fedora03_add-4.png" title="100px" alt="fedora03 생성-4"> <br>
 <br>
@@ -140,8 +140,10 @@ spec:
    <img src="new_images/214_fedora03_console_ip.png" title="100px" alt="가상머신 Console 확인"> <br>
 <br>
 
-9. (선택 사항) fedora 계정/패스워드로 접속허용을 위해 sshd 설정을 변경합니다.
-   **Console** 탭으로 이동하여 터미널에 접속한 후, sudo로 계정을 스위치 합니다.
+이제 해당 VM으로 동일 프로젝트내의 다른 VM에서 VM network를 통해 ssh 접속을 할 수 있도록 사전작업(ssh 접속 허용)을 진행합니다.
+
+10. fedora 계정/패스워드로 접속허용을 위해 sshd 설정을 변경합니다.
+   **Console** 탭으로 이동하여 터미널에 접속(user name과 password는 제공 된 Guest login credentual값을 이용)한 후, sudo로 계정을 스위치 합니다.
 
    ```bash
    sudo -i
@@ -166,21 +168,21 @@ spec:
 <br>
 
 
-10. **/etc/ssh/sshd_config.d/50-cloud-init.conf** 파일의 설정을 확인합니다.
+12. **/etc/ssh/sshd_config.d/50-cloud-init.conf** 파일의 설정을 확인합니다.
       해당 설정이 override될 수 있으므로 확인합니다.
       ```bash
       cd /etc/ssh/sshd_config.d
       ```
       <img src="new_images/218_sshd_config_d.png" title="100px" alt="가상머신의 SSH 설정 확인"> <br>
 
-11. **50-cloud-init.conf** 파일을 열어서 **PasswordAuthentication** 값을 **yes**로 변경합니다.
+13. **50-cloud-init.conf** 파일을 열어서 **PasswordAuthentication** 값을 **yes**로 변경합니다.
       ```bash
       PasswordAuthentication yes
       ```
       <img src="new_images/219_sshd_config_update.png" title="100px" alt="가상머신의 SSH 설정 업데이트"> <br>
       
 
-12. 설정을 저장하고, 반영을 위해 sshd 서비스를 재 시작합니다.
+14. 설정을 저장하고, 반영을 위해 sshd 서비스를 재 시작합니다.
    ```bash
    systemctl restart sshd
    ```
@@ -204,14 +206,13 @@ spec:
 <br>
 
 4. **VirtualMachine name**에 **fedora03**을 입력한 후, **Customize VirtualMachine** 버튼을 클릭합니다.
-   <img src="new_images/209_fedora03_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
+   <img src="new_images/221_fedora04_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
 <br>
 
 5. **Add Network interface** 를 클릭합니다.
 
    <img src="new_images/210_fedora03_add-4.png" title="100px" alt="fedora03 생성-4"> <br>
 <br>
-
 
 6. **Network** 메뉴의 **vmnetwork/vlan0**을 선택한 후, **Save**를 클릭합니다. 
 
@@ -223,33 +224,24 @@ spec:
    <img src="new_images/212_fedora03_add-6.png" title="100px" alt="fedora03 생성-6"> <br>
 <br>
 
-
-   3. IP를 자신의 IP로 대체하여 ssh 접속 명령어를 입력하고, 비밀번호(ocpVirtIsGre@t)를 입력합니다.
-      
-      ```bash
-      ssh fedora@192.168.3.152
-      ```
+8. fedora04 VM의 **console** 탭으로 이동하여 로그인(user name과 password는 제공 된 Guest login credentual값을 이용)합니다.
+  
+   <img src="new_images/222_fedora04_add-7.png" title="100px" alt="fedora03 생성-6"> <br>
+<br>   
    
-      실행 결과
-      ```bash
-      [lab-user@hypervisor ~]$ ssh fedora@192.168.3.152
-      fedora@192.168.3.152's password: 
-      Last login: Fri Jul  5 06:10:12 2024 from 192.168.3.1
-      ```
-      
-      실행 결과는 다음과 같습니다.
-      <img src="new_images/181_ssh_connect.png" title="100px" alt="가상머신의 SSH 연결 확인"> <br>
-
        
-   8. 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
+9. fedora03 VM의 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
       ```bash
-      ssh fedora@192.168.3.152
+      ssh fedora@192.168.100.2
       ```
 
-      <img src="new_images/187_ssh_connect_susscess.png" title="100px" alt="가상머신의 SSH 접속 확인"> <br>
+      <img src="new_images/223_ssh_connect_susscess.png" title="100px" alt="가상머신의 SSH 접속 확인"> <br>
       
 > [!NOTE]
-> 노드에 할당된 IP를 가지고 기존 IP를 교체합니다.
+> 실제 fedora03 VM노드에 할당된 IP로 접속IP를 교체합니다.
+> <img src="new_images/224_fedora03_IP.png" title="100px" alt="가상머신의 SSH 접속 확인2"> <br>
+> fedora03 VM의 password는 fedora03 VM console에서 credential값에서 확인할 수 있습니다.
+> <img src="new_images/225_fedora03_password.png" title="100px" alt="가상머신의 SSH 접속 확인3"> <br> 
 <br>
 <br>
 
