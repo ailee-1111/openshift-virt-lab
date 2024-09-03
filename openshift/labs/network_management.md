@@ -44,7 +44,7 @@
       <img src="new_images/300_project.png" title="100px" alt="모든 프로젝트 선택"> <br> 
 
 
-2. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고, 목록 중 'vlan0'을  클릭 합니다.
+2. **네트워킹** → **NetworkAttachmentDefinitions**로 이동하고, 목록 중 `vlan0`을  클릭 합니다.
 
    <img src="new_images/301_networkattachment.png" title="100px" alt="Network Attachment Definition 대시보드"> <br> 
 
