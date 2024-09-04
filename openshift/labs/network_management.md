@@ -70,7 +70,7 @@
    <img src="new_images/206_vmnetwork_project.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br> 
   
-2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
+2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create** → **From template**을 클릭합니다.
 
    <img src="new_images/207_fedora03_add_.png" title="100px" alt="Fedora03 생성"> <br>
 <br>
