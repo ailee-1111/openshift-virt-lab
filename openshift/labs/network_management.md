@@ -158,47 +158,24 @@
 <br>
 
 
-## 4. 외부 네트워크를 사용하는 가상머신 추가 배포 및 ssh 접속 확인
+## 4. 외부 네트워크를 사용하는 가상머신 ssh 접속 확인
 
 
-1.**vmnetwork** 프로젝트를 선택합니다.
+1. **vmnetwork** 프로젝트를 선택합니다.
    <img src="new_images/206_vmnetwork_project.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br>
-   
-2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
-   <img src="new_images/207_fedora03_add.png" title="100px" alt="Fedora03 생성"> <br>
+
+2. **Virtualization** → **VirtualMachines** 으로 이동하여 미리 생성되어 있는 fedora04 VM을 클릭합니다.
+   <img src="new_images/300_fedora04_list.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br>
 
-3. 템플릿 검색창에 **'Fedora'** 를 검색하여 **Fedora VM Network** 템플릿을 선택합니다.
-   <img src="new_images/208_fedora03_add-2.png" title="100px" alt="Fedora03 생성-2"> <br>
-<br>
-
-4. **VirtualMachine name**에 **fedora03**을 입력한 후, **Customize VirtualMachine** 버튼을 클릭합니다.
-   <img src="new_images/221_fedora04_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
-<br>
-
-5. **Add Network interface** 를 클릭합니다.
-
-   <img src="new_images/210_fedora03_add-4.png" title="100px" alt="fedora03 생성-4"> <br>
-<br>
-
-6. **Network** 메뉴의 **vmnetwork/vlan0**을 선택한 후, **Save**를 클릭합니다. 
-
-   <img src="new_images/211_fedora03_add-5.png" title="100px" alt="fedora03 생성-5"> <br>
-<br>
-
-7. **Create VirtualMachine**을 클릭합니다. 
-
-   <img src="new_images/212_fedora03_add-6.png" title="100px" alt="fedora03 생성-6"> <br>
-<br>
-
-8. fedora04 VM의 **console** 탭으로 이동하여 로그인(user name과 password는 제공 된 Guest login credentual값을 이용)합니다.
+3. fedora04 VM의 **console** 탭으로 이동하여 로그인(user name과 password는 제공 된 Guest login credentual값을 이용)합니다.
   
    <img src="new_images/222_fedora04_add-7.png" title="100px" alt="fedora03 생성-6"> <br>
 <br>   
    
        
-9. fedora03 VM의 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
+4. fedora03 VM의 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
       ```bash
       ssh fedora@192.168.100.2
       ```
