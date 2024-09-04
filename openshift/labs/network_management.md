@@ -108,12 +108,13 @@
 
    <img src="new_images/213_fedora03-overview.png" title="100px" alt="가상머신 네트워크 인터페이스 확인"> <br>
 <br>
+
 9. **Console** 탭에서도 추가된 인터페이스를 확인 할 수 있습니다.
 
    <img src="new_images/214_fedora03_console_ip.png" title="100px" alt="가상머신 Console 확인"> <br>
 <br>
 
-이제 해당 VM으로 동일 프로젝트내의 다른 VM에서 VM network를 통해 ssh 접속을 할 수 있도록 사전작업(ssh 접속 허용)을 진행합니다.
+ 이제 해당 VM으로 동일 프로젝트내의 다른 VM에서 VM network를 통해 ssh 접속을 할 수 있도록 사전작업(ssh 접속 허용)을 진행합니다.
 
 10. fedora 계정/패스워드로 접속허용을 위해 sshd 설정을 변경합니다.
    **Console** 탭으로 이동하여 터미널에 접속(user name과 password는 제공 된 Guest login credentual값을 이용)한 후, sudo로 계정을 스위치 합니다.
