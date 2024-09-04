@@ -13,4 +13,3 @@
 9. [백업 및 복구](./openshift/labs/backup_and_restore.md) 
 10. [랩 마무리](./openshift/labs/close.md) 
 
-test
