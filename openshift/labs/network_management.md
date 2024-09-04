@@ -72,7 +72,7 @@
   
 2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
 
-   <img src="new_images/207_fedora03_add.png" title="100px" alt="Fedora03 생성"> <br>
+   <img src="new_images/207_fedora03_add_.png" title="100px" alt="Fedora03 생성"> <br>
 <br>
 
 3. 템플릿 검색창에 **'Fedora'** 를 검색하여 **Fedora VM Network** 템플릿을 선택합니다.
