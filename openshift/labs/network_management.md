@@ -142,21 +142,21 @@
 <br>
 
 
-12. **/etc/ssh/sshd_config.d/50-cloud-init.conf** 파일의 설정을 확인합니다.
+11. **/etc/ssh/sshd_config.d/50-cloud-init.conf** 파일의 설정을 확인합니다.
       해당 설정이 override될 수 있으므로 확인합니다.
       ```bash
       cd /etc/ssh/sshd_config.d
       ```
       <img src="new_images/218_sshd_config_d.png" title="100px" alt="가상머신의 SSH 설정 확인"> <br>
 
-13. **50-cloud-init.conf** 파일을 열어서 **PasswordAuthentication** 값을 **yes**로 변경합니다.
+12. **50-cloud-init.conf** 파일을 열어서 **PasswordAuthentication** 값을 **yes**로 변경합니다.
       ```bash
       PasswordAuthentication yes
       ```
       <img src="new_images/219_sshd_config_update.png" title="100px" alt="가상머신의 SSH 설정 업데이트"> <br>
       
 
-14. 설정을 저장하고, 반영을 위해 sshd 서비스를 재 시작합니다.
+13. 설정을 저장하고, 반영을 위해 sshd 서비스를 재 시작합니다.
    ```bash
    systemctl restart sshd
    ```
