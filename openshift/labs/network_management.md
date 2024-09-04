@@ -53,6 +53,7 @@
 <br>
 
 3. **YAML** 탭을 클릭 한 후, *Network Attachment Definition*의 세부사항을 조사하십시오. `vmnetwork` 프로젝트에서 생성되었기 때문에 다른 프로젝트에서는 사용할 수 없습니다.
+
     <img src="new_images/302_nad_yaml.png" title="100px" alt="Network Attachment Definition YAML"> <br>
 
 **netAttachDefName** 에 명시된 **vmnetwork/vlan0**값은 VM에 Network interface를 할당하여 사용할 때, 기준값이 됩니다. 
@@ -65,18 +66,22 @@
 ## 3. 외부 네트워크를 사용하는 가상머신 배포
 
 1. **vmnetwork** 프로젝트를 선택합니다.
+
    <img src="new_images/206_vmnetwork_project.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br> 
   
 2. **Virtualization** → **VirtualMachines**으로 이동하여 **Create VirtualMachine** → **From template**을 클릭합니다.
+
    <img src="new_images/207_fedora03_add.png" title="100px" alt="Fedora03 생성"> <br>
 <br>
 
 3. 템플릿 검색창에 **'Fedora'** 를 검색하여 **Fedora VM Network** 템플릿을 선택합니다.
+
    <img src="new_images/208_fedora03_add-2.png" title="100px" alt="Fedora03 생성-2"> <br>
 <br>
 
 4. **VirtualMachine name**에 **fedora03**을 입력한 후, **Customize VirtualMachine** 버튼을 클릭합니다.
+
    <img src="new_images/209_fedora03_add-3.png" title="100px" alt="Fedora03 생성-3"> <br>
 <br>
 
@@ -162,20 +167,22 @@
 
 
 1. **vmnetwork** 프로젝트를 선택합니다.
+   
    <img src="new_images/206_vmnetwork_project.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br>
 
-2. **Virtualization** → **VirtualMachines** 으로 이동하여 미리 생성되어 있는 fedora04 VM을 클릭합니다.
+3. **Virtualization** → **VirtualMachines** 으로 이동하여 미리 생성되어 있는 fedora04 VM을 클릭합니다.
+   
    <img src="new_images/300_fedora04_list.png" title="100px" alt="vmnetwork 프로젝트 확인"> <br>
 <br>
 
-3. fedora04 VM의 **console** 탭으로 이동하여 로그인(user name과 password는 제공 된 Guest login credentual값을 이용)합니다.
+5. fedora04 VM의 **console** 탭으로 이동하여 로그인(user name과 password는 제공 된 Guest login credentual값을 이용)합니다.
   
    <img src="new_images/222_fedora04_add-7.png" title="100px" alt="fedora03 생성-6"> <br>
 <br>   
    
        
-4. fedora03 VM의 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
+6. fedora03 VM의 외부 IP로 ssh 접근 확인합니다. IP는 자신의 환경에 맞는 IP로 대체하여 실행합니다.
       ```bash
       ssh fedora@192.168.100.2
       ```
