@@ -138,7 +138,7 @@
 > `cloudinitdisk`가 스냅샷에 포함되지 않는다는 경고가 표시됩니다. 이는 임시(ephemeral) 디스크이기 때문에 예상되는 현상이며 발생합니다.
 <br>
 
-4. **Save**를 누르고 *스냅샷(Snapshot)* 이 생성되면 **Status** 가 `Succeeded`으로 표시될 때까지 기다립니다.
+4. **Save**를 누르고 *스냅샷(Snapshot)* 이 생성되면 **Status** 가 `Operation complete`로 표시될 때까지 기다립니다.
 
    <img src="new_images/94_fedora02_snapshot_success.png" title="100px" alt="가상머신의 스냅샷 확인"> <br>
 <br>
