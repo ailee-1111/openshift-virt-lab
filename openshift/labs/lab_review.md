@@ -101,6 +101,7 @@ IPI(Installer Provisioned Infrastructure) 방법을 사용하여 배포할 때 �
    ```
    https://console-openshift-console.apps.${GUID}.dynamic.redhatworkshops.io/
    ```
+   <img src="new_images/400_console-login.png" title="100px" alt="오픈시프트 웹콘솔 로그인"> <br> 
 <br>
 
 2. 탐색 메뉴에서 **컴퓨팅** → **노드**를 선택합니다.
