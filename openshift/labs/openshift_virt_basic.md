@@ -271,7 +271,6 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 
     <img src="new_images/32_window_vm_setting-1.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기-1"> <br>
 <br>
-
     <img src="new_images/32_window_vm_setting.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기"> <br>
 <br>
 
