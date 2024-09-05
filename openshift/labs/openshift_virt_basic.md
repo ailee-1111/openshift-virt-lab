@@ -267,7 +267,7 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 <br>
 
 
-8. 매개변수를 입력이 완료되면 **Customize VirtualMachine을**를 누르고, 변경한 이름과 Boot Disk 설정을 확인합니다.
+8. 매개변수를 입력이 완료되면 **Customize VirtualMachine을**을 누르고, 변경한 이름, Boot mode와 Boot Disk 설정을 확인합니다
 
     <img src="new_images/32_window_vm_setting.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기"> <br>
 <br>
