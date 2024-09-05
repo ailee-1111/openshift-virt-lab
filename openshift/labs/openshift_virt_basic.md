@@ -184,7 +184,7 @@ SDN(소프트웨어 정의 네트워크)에 있는 가상머신의 IP 주소도 
    ```
    <img src="new_images/21_fedora_agent.png" title="100px" alt="페도라 가상머신 내 게스트 에이전트 실행"> <br> 
 > [!NOTE]
-> 우리가 생성한 Fedora VM은 Red Hat에서 제공하는 OS이미지와 템플릿으로 생성되어 에이전트가 사전에 설치되어 있지만, 
+> 우리가 생성한 Fedora VM은 Red Hat에서 제공하는 OS이미지로 생성되어 에이전트가 사전에 설치되어 있지만, 
 Red Hat에서 제공하지 않는 OS이미지에서 생성된 VM에는 QEMU 게스트 에이전트를 직접 설치해야 합니다.
 <br>
 
@@ -198,14 +198,14 @@ Red Hat에서 제공하지 않는 OS이미지에서 생성된 VM에는 QEMU 게�
    * 사용량: CPU, 메모리, 스토리지 및 네트워크
 <br>
 
-11. **Metrics** 탭으로 이동하여 시간 범위 지정 등을 통해 사용량에 대한 추가 정보를 얻을 수 있습니다.
+11. **Metrics** 탭으로 이동하면 리소스 사용량에 대한 추가 정보를 얻을 수 있습니다.
 
     <img src="new_images/23_fedora_metrics.png" title="100px" alt="페도라 가상머신 메트릭 표시"> <br> 
 <br>
 
 #### 2.2.2 가상머신과 연결된 리소스 검사
 
-**Configuration** 탭은 가상머신의 리소스에 대한 정보를 얻기 위한 진입점입니다. 여기에는 7개의 하위 탭이 포함됩니다.
+**Configuration** 탭에서는 가상머신의 구성요소에 대한 설정이 가능합니다. 여기에는 7개의 하위 탭이 있습니다.
 
 <img src="new_images/24_fedora_configuration.png" title="100px" alt="가상머신 스케줄링 탭"> <br> 
 
