@@ -462,12 +462,16 @@ virtio 드라이버가 없으면 준가상화된 하드웨어를 제대로 사�
     <img src="new_images/40_win_vm_provisioning.png" title="100px" alt="윈도우 2019 프로비저닝"> <br>
 <br>
 
-16. 몇 분 후에 가상머신의 Status 값이 `Running`으로 바뀝니다. **Console** 탭으로 전환합니다.
+16. 몇 분 후에 가상머신의 Status 값이 `Running`으로 바뀝니다. **Console** 탭으로 전환합니다. Windows 설치 과정이 진행되고 있는 것을 확인하실 수 있습니다. 
 
     <img src="new_images/41_win_console.png" title="100px" alt="윈도우 2019 가상머신 콘솔"> <br>
 
 > [!NOTE]
 > 설치가 완료될 때까지 기다릴 필요 없이 다음 단계를 계속 진행할 수 있습니다.
+
+> [!NOTE]
+> 설치 프로세스가 완료되면(프로비저닝에는 3~5분, 시작 및 구성에는 약 10분 소요), 가상머신의 전원을 끄고 루트 디스크를 복제해서 Windows 가상머신 배포용으로 사용할 수 있습니다.
+> 이렇게 하면 매번 설치용 CD파일을 지정하거나 Autounattend.xml를 입력할 필요가 없습니다.
 
 > [!IMPORTANT]
 > CD-ROM 디스크가 연결되어 있으므로 가상머신은 "마이그레이션할 수 없음(Not migratable)"으로 표시됩니다.
