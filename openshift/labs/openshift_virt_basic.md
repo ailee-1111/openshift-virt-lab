@@ -70,8 +70,9 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 
    1. 왼쪽 상단에 있는 **프로젝트: 모든 프로젝트**를 클릭한 다음 **프로젝트 만들기**를 클릭합니다.
       <img src="new_images/05_project.png" title="100px" alt="모든 프로젝트 선택"> <br> 
-
-   2. **이름** 필드에 `vmexamples` 를 입력하여 프로젝트 이름을 입력한 다음 **만들기** 를 클릭합니다. 다른 이름을 입력하지 마시고 반드시 `vmexamples`를 입력하시길 바랍니다. (원활한 실습 진행을 위하여)
+<br>
+   2. **이름** 필드에 `vmexamples` 를 입력하여 프로젝트 이름을 입력한 다음 **만들기** 를 클릭합니다. 다른 이름을 입력하지 마시고 반드시 `vmexamples`를 입력하시길 바랍니다.
+<br>
       <img src="new_images/06_project_name.png" title="100px" alt="프로젝트 생성하기"> <br> 
 <br>
 
@@ -84,12 +85,12 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
    사용 가능한 템플릿 목록을 확인해면 일부 템플릿에는 "소스 사용 가능(Source available)"이라고 적힌 파란색 배지가 있음을 알 수 있습니다. 오픈시프트에서 자동으로 다운로드하여 저장한 디스크를 사용하는 템플릿입니다. 별도의 디스크를 사용하려고 하는 경우, 자동 다운로드를 방지하고 커스터마이징된 디스크를 업로드할 수 있는 옵션도 있습니다.
 <br>
 
-4. 카탈로그의 검색창에서 `fedora`를 입력하여 **Fedora VM** 템플을 선택합니다.
+4. 카탈로그의 검색창에서 `fedora`를 입력하여 **Fedora VM** 템플릿을 선택합니다.
 
    <img src="new_images/09_fedora.png" title="100px" alt="페도라 가상머신 템플릿 찾기"> <br> 
 <br>
 
-5. **Fedora VM** 템플릿의의 대화 상자를 확인합니다.
+5. **Fedora VM** 템플릿의 대화 상자를 확인합니다.
 
    <img src="new_images/10_fedora_vm_templates.png" title="100px" alt="페도라 가상머신 템플릿"> <br> 
 <br>
@@ -104,7 +105,7 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
    <img src="new_images/12_fedora_running.png" title="100px" alt="페도라 가상머신 실행"> <br> 
 <br>
 
-8. 가상머신이 생성된 후 **Events** 탭을 검사하여 프로세스의 일부 세부 정보를 확인합니다. 가상머신 생성에 문제가 있는 경우에 이 탭에 표시됩니다.
+8. 가상머신이 생성된 후 **Events** 탭을 클릭하여 가상머신 생성 및 실행 과정과 관련된 정보를 확인합니다. 가상머신 생성에 문제가 있는 경우에 이 탭에 표시됩니다.
 
    <img src="new_images/13_events.png" title="100px" alt="페도라 가상머신 이벤트"> <br> 
 
@@ -114,7 +115,7 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 
 9. 다시 **Overview** 탭을 클릭하여 가상머신 정보를 표시하는 기본 화면으로 돌아갑니다. 이 템플릿의 경우 기본값은 CPU 1개와 메모리 2GiB입니다. 관리자는 가상머신의 기본 구성을 사용자 정의하는 템플릿을 생성할 수 있습니다.
 <br>
-   SDN(소프트웨어 정의 네트워크)에 있는 가상머신의 IP 주소도 이 페이지에 표시되며, 스토리지, 시스템 사용량, 가상머신을 호스팅하는 클러스터 노드 등에 대한 정보도 함께 표시됩니다.
+SDN(소프트웨어 정의 네트워크)에 있는 가상머신의 IP 주소도 이 페이지에 표시되며, 스토리지, 시스템 사용량, 가상머신을 호스팅하는 클러스터 노드 등에 대한 정보도 함께 표시됩니다.
 <br>
     <img src="new_images/14_os_info.png" title="100px" alt="페도라 가상머신 상세정보"> <br>
    기본적으로 VM은 기본 Pod 네트워크에 연결됩니다. 이 랩의 후반부에서는 고급 네트워킹 옵션과 VM에 대한 연결을 커스터마이징 하는 방법을 살펴보겠습니다.
@@ -149,23 +150,23 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 
    <img src="new_images/17_fedora_ipa_command.png" title="100px" alt="페도라 가상머신 IP 주소 확인"> <br> 
 
-   가상머신의 네트워크 어댑터는 SDN에 연결되어 있으므로 할당된 IP 주소는 *KVM 하이퍼바이저*에서 사용하는 내부 IP 주소이며 외부에서 액세스할 수 있는 IP가 아닙니다. 가상머신이 다른 노드로 라이브 마이그레이션되고 SDN에 연결된 외부 IP가 변경되더라도 가상머신의 IP는 변경되지 않습니다.
+   가상머신의 네트워크 어댑터는 SDN에 연결되어 있으므로 할당된 IP 주소는 *KVM 하이퍼바이저*에서 사용하는 내부 IP 주소입니다. 즉, 외부에서 액세스할 수 있는 IP가 아닙니다. 가상머신의 네트워크 설정에 대해서는 이후 실습에서 자세하게 다룹니다.
 <br>
 
 5. `lsblk`를 실행하여 디스크 목록과 해당 용량, 여유 공간을 표시합니다.
 
    <img src="new_images/18_fedora_lsblk_command.png" title="100px" alt="페도라 가상머신 블록 디바이스 확인"> <br> 
 
-   * `/dev/vda`는 가상머신 생성 중에 생성된 디스크이며 생성 시 지정된 크기입니다.
-   * `/dev/vdb`는 `cloud-init`으로 필수 데이터(예: `fedora` 사용자 비밀번호 등) 구성에 사용됩니다. 이 디스크는 가상머신이 생성된 후 제거될 수 있습니다.
+   * `/dev/vda`는 가상머신 생성 단계에서 구성한 루트 디스크이며 지정된 크기(30G)로 생성된 것을 확인할 수 있습니다.
+   * `/dev/vdb`는 `cloud-init`으로 필수 데이터(예: `fedora` 사용자 비밀번호 등) 구성에 사용됩니다. 이 디스크는 가상머신이 생성된 후 제거할 수 있습니다.
 <br>
 
-6. `nproc` 및 `free -m` 명령을 사용하여 가상머신과 연결된 CPU 수 및 메모리 양(생성 중에 지정된 flavor와 일치)을 검사합니다.
+6. `nproc` 및 `free -m` 명령을 사용하여 가상머신과 연결된 CPU 수 및 메모리 크기(생성 중에 지정된 flavor와 일치)를 확합니다.
 
    <img src="new_images/19_fedora_resources.png" title="100px" alt="페도라 가상머신 CPU/MEM 확인"> <br> 
 <br>
 
-7. 게스트 사용자 정의를 검토하려면 `cloud-init` 디스크를 마운트합니다. <br>
+7. `cloud-init`파일을 통해 커스터마이징된 GuestOS 정보를 확인하려면 `cloud-init` 디스크를 마운트합니다. <br>
    아래 명령어를 실행합니다.
    ```bash
       sudo mount /dev/vdb /mnt
@@ -176,15 +177,18 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
    <img src="new_images/20_fedora_cloud_init.png" title="100px" alt="페도라 가상머신 용 cloud-init"> <br> 
 <br>
 
-8. 하이퍼바이저에 인스턴스는 정보를 표시하고 인스턴스의 디스크 정지와 같은 작업을 조정하기 위해 게스트 에이전트를 실행 중입니다. <br>
-   아래 명령어를 실행하여 확인합니다.
+8. QEMU 게스트 에이전트는 가상머신에서 실행되는 데몬으로, VM, 사용자, 파일 시스템 및 보조 네트워크에 대한 정보를 호스트에 전달합니다. <br>
+우리가 생성한 Fedora VM은 Red Hat에서 제공하는 OS이미지와 템플릿으로 생성되어 에이전트가 사전에 설치되어 있지만, 
+Red Hat에서 제공하지 않는 OS이미지에서 생성된 VM에는 QEMU 게스트 에이전트를 직 설치해야 합니다.
+<br>
+   아래 명령어를 실행하여 에이전트를 확인합니다.
    ```bash
       systemctl | grep agent
    ```
    <img src="new_images/21_fedora_agent.png" title="100px" alt="페도라 가상머신 내 게스트 에이전트 실행"> <br> 
 <br>
 
-9. **Overview** 탭을 클릭하여 게스트 가상머신에서 얻은 정보를 표시합니다.
+9. **Overview** 탭을 클릭하여 게스트 가상머신의 기본 정보를 표시합니다.
 
    <img src="new_images/22_fedora_overview.png" title="100px" alt="페도라 가상머신 정보 표시"> <br> 
 
@@ -205,13 +209,6 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 
 <img src="new_images/24_fedora_configuration.png" title="100px" alt="가상머신 스케줄링 탭"> <br> 
 
-* **Scheduling**: 가상머신이 실행되어야 하는 위치와 제거를 위해 따라야 할 전략을 나타내는 고급 구성이 포함됩니다. 이는 (반)친화성[(anti)affinity] 규칙을 구성하고, 노드 선택기(selector)와 허용 오차를 구성하고, 가상머신을 예약할 수 있는 클러스터 노드에 영향을 미치는 기타 동작을 구성하는 데 사용됩니다.
-* **Environment**: *ConfigMap*, *Secret*, *서비스 계정(Service Accounts)* 을 추가 디스크로 연결할 수 있습니다. 이는 가상머신에서 실행 중인 애플리케이션에 구성 데이터를 전달할 때 유용합니다.
-* **Network interfaces**: 가상머신에 대해 구성된 현재 네트워크 인터페이스를 표시하고 새 네트워크 인터페이스를 추가합니다.
-* **Disks**: 시스템에 연결된 디스크를 나열하고 시스템에 새 디스크를 추가할 수 있습니다. 게스트가 에이전트로 구성된 경우 파일 시스템과 활용도가 나열됩니다.
-* **Scripts**: 이 탭을 사용하면 SSH 키 삽입, 애플리케이션 설치, 네트워크 구성 등과 같이 첫 번째 부팅 시 실행할 명령 설정을 포함하여 리눅스 용 *cloud-init* 또는 마이크로소프트 용 *sys-prep*을 구성할 수 있습니다.
-
-
 * **Details**: 이 탭은 단일 패널에서 가상머신의 모든 물리적 기능을 제공합니다. 예를 들어 CPU 또는 메모리 수정, 호스트 이름 변경, 패스스루 장치(GPU, Host Devices) 연결, 부팅 순서 수정을 포함하여 기본 하드웨어적 구성을 편집할 수 있습니다.
 * **Storage**: 이 탭은 시스템에 연결된 디스크를 나열하고 시스템에 새 디스크를 추가할 수 있도록 합니다. 게스트 에이전트가 설치된 경우 파일 시스템과 사용률이 표시됩니다. 또한 ConfigMaps, Secrets 및 Service Accounts를 추가 디스크로 연결할 수 있습니다. 이는 가상 머신에서 실행되는 애플리케이션에 설정 데이터(환경변수, 인증정보 등)를 전달할 때 유용합니다.
 * **Network**: 이 탭은 가상머신에 구성된 현재 네트워크 인터페이스를 표시하며 새로운 네트워크 인터페이스를 추가할 수 있도록 합니다.
@@ -221,12 +218,11 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 * **Metadata**: 이 탭은 가상머신에 적용된 현재 레이블과 주석을 보여줍니다. 이러한 값을 수정하면 특정 목적에 맞게 머신을 태그하거나 머신을 고유하게 식별하여 자동화된 워크플로를 활성화하는 데 도움이 될 수 있습니다.
 <br>
 
-1. **Network** 하위 탭을 클릭하여 가상머신에 연결된 네트워크 인터페이스를 검사합니다.
+1. **Network** 하위 탭을 클릭하여 가상머신에 연결된 네트워크 인터페이스를 확인합니다.
 
    <img src="new_images/25_fedora_network_interface.png" title="100px" alt="가상머신 네트워크 탭"> <br>
    가상머신이 생성되면 기본적으로 `PodNetworking` 네트워크에서 `masquerade` 유형의 인터페이스가 생성됩니다. 이를 통해 VM이 SDN에 연결되고 VM에서 OpenShift 클러스터 외부로 접근할 수 있습니다. 클러스터의 다른 VM과 Pod는 이 인터페이스를 사용하여 가상머신에 접속할 수 있습니다.
-<br>
-   SDN에 연결된 VM은 Route 또는 Service 유형을 사용하여 외부에서 접근할 수 있도록 설정 가능하지만, 오늘 실습에서는 이에 대해 다루지 않습니다.
+   SDN에 연결된 VM은 Route 또는 Service 유형을 사용하여 클러스터 외부에서도 접근할 수 있도록 설정 가능하지만, 오늘 실습에서는 이에 대해 다루지 않습니다.
 <br>
 
 2. **Storage** 하위 탭을 클릭하여 가상머신과 연결된 디스크를 나열합니다.
@@ -270,8 +266,8 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 <br>
 
 5. **Storage** 섹션에서 다음을 지정합니다.
-   1. **VirtualMachine name**에 `windows` 입
-   2. **Boot from CD** 체크박스를 활성화
+   1. **VirtualMachine name**에 `windows` 입력
+   2. **Boot from CD** 체크박스 활성화
    3. **CD Source**를 URL로 선택
    4. **Image URL**에 `https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso` 를 입력
    5. **Disk size**를 **5GiB**로 설정하여 CD 크기를 줄임
@@ -279,7 +275,6 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 6. 그 아래 **Disk source**는 그대로 두고 하단의 **Disk size**의 값도 기본값인 **60GiB**로 유지합니다.
 
 7. **Drivers**에서 `Mount Windows drivers disk`가 활성화되어 있는지 확인합니다. 
-<br>
 이 드라이버는 Microsoft Windows 가상 머신을 OpenShift Virtualization에서 실행하는데 필요한 준가상화 장치 드라이버입니다.
 virtio 드라이버가 없으면 준가상화된 하드웨어를 제대로 사용할 수 없으므로, 작동하지 않거나 심각한 성능 저하가 발생합니다.
 
@@ -289,7 +284,6 @@ virtio 드라이버가 없으면 준가상화된 하드웨어를 제대로 사�
 
 9. 커스터마이징 화면이 뜨면 **Boot mode** 옵션 옆에 있는 편집 연필 아이콘을 클릭합니다. 
     <img src="new_images/32_window_vm_setting-1.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기-1"> <br>
-<br>
 부팅모드 메뉴가 나타나면 드롭다운 메뉴에서 `BIOS` 부팅 모드를 선택합니다.
     <img src="new_images/32_window_vm_setting.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기"> <br>
 <br>
@@ -298,8 +292,7 @@ virtio 드라이버가 없으면 준가상화된 하드웨어를 제대로 사�
     <img src="new_images/32_boot_disk_2.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기"> <br>
 만약 **Disk** 메뉴에서 installation-cdrom이 boot의 첫 번째 순서가 아닌 경우에는 오른쪽 끝을 선택하여 Book Disk 순서를 아래 그림과 같이 변경합니다.
     <img src="new_images/32_boot_disk_update.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기"> <br>
-<br>
-**Use this disk as a boot source**의 체크박스를 선택하고 **Save**를 누릅니다.
+그리고 **Use this disk as a boot source**의 체크박스를 선택하고 **Save**를 누릅니다.
     <img src="new_images/31_boot_disk_order_change-new.png" title="100px" alt="윈도우 2019 템플릿 패러미터 채우기"> <br>
 <br>
 
