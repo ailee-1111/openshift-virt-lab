@@ -72,6 +72,7 @@ Overview 대시보드는 오픈시프트 가상화 및 가상머신의 상태에
 * 왼쪽 상단에 있는 **프로젝트: 모든 프로젝트**를 클릭한 다음 **프로젝트 만들기**를 클릭합니다.
       <img src="new_images/05_project.png" title="100px" alt="모든 프로젝트 선택"> <br> 
 * **이름** 필드에 `vmexamples`를 입력하여 프로젝트 이름을 입력한 다음 **만들기** 를 클릭합니다. 다른 이름을 입력하지 마시고 반드시 `vmexamples`를 입력하시길 바랍니다.
+<br>
       <img src="new_images/06_project_name.png" title="100px" alt="프로젝트 생성하기"> <br> 
 <br>
 
@@ -177,17 +178,17 @@ SDN(소프트웨어 정의 네트워크)에 있는 가상머신의 IP 주소도 
 <br>
 
 8. QEMU 게스트 에이전트는 가상머신에서 실행되는 데몬으로, VM, 사용자, 파일 시스템 및 보조 네트워크에 대한 정보를 호스트에 전달합니다. <br>
-우리가 생성한 Fedora VM은 Red Hat에서 제공하는 OS이미지와 템플릿으로 생성되어 에이전트가 사전에 설치되어 있지만, 
-Red Hat에서 제공하지 않는 OS이미지에서 생성된 VM에는 QEMU 게스트 에이전트를 직 설치해야 합니다.
-<br>
    아래 명령어를 실행하여 에이전트를 확인합니다.
    ```bash
       systemctl | grep agent
    ```
    <img src="new_images/21_fedora_agent.png" title="100px" alt="페도라 가상머신 내 게스트 에이전트 실행"> <br> 
+> [!NOTE]
+> 우리가 생성한 Fedora VM은 Red Hat에서 제공하는 OS이미지와 템플릿으로 생성되어 에이전트가 사전에 설치되어 있지만, 
+Red Hat에서 제공하지 않는 OS이미지에서 생성된 VM에는 QEMU 게스트 에이전트를 직접 설치해야 합니다.
 <br>
 
-9. **Overview** 탭을 클릭하여 게스트 가상머신의 기본 정보를 표시합니다.
+10. **Overview** 탭을 클릭하여 게스트 가상머신의 기본 정보를 표시합니다.
 
    <img src="new_images/22_fedora_overview.png" title="100px" alt="페도라 가상머신 정보 표시"> <br> 
 
@@ -197,7 +198,7 @@ Red Hat에서 제공하지 않는 OS이미지에서 생성된 VM에는 QEMU 게�
    * 사용량: CPU, 메모리, 스토리지 및 네트워크
 <br>
 
-10. **Metrics** 탭으로 이동하여 시간 범위 지정 등을 통해 사용량에 대한 추가 정보를 얻을 수 있습니다.
+11. **Metrics** 탭으로 이동하여 시간 범위 지정 등을 통해 사용량에 대한 추가 정보를 얻을 수 있습니다.
 
     <img src="new_images/23_fedora_metrics.png" title="100px" alt="페도라 가상머신 메트릭 표시"> <br> 
 <br>
