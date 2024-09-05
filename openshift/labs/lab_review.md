@@ -24,12 +24,8 @@
 
 ### 1.1 지원되는 플랫폼
 
-* 현재 오픈시프트 가상화는, 온프레미스 또는 이와 유사한 위치에서, 자체 관리형 베어메탈 서버를 통해 완벽하게 지원됩니다. 오늘 실습 환경에서 사용하고 있는 장비는 Equinix에 배포된 오픈시프트 클러스터입니다.
-* Amazon Web Services(AWS) 베어메탈 인스턴스는 Technical Preview입니다. 자세한 내용은 [AWS 베어메탈 노드에 오픈시프트 가상화 배포](https://access.redhat.com/articles/6409731)를 참조하세요.
-* IBM 클라우드 베어메탈 서버는 Technocal Preview입니다. 자세한 내용은 [IBM 클라우드 베어메탈 노드에 오픈시프트 가상화 배포](https://access.redhat.com/articles/6738731)를 참조하세요.
-<br>
-> [!NOTE]
-> AWS 베어메탈 인스턴스 또는 IBM 클라우드 베어메탈 서버에 오픈시프트 가상화를 설치하는 것은 Technical Preview 기능입니다. Technical Preview 기능은 레드햇 프로덕션 서비스 수준 계약(SLA)에서 지원되지 않으며 기능적으로 완전하지 않을 수도 있습니다. 레드햇은 이를 프로덕션 환경에서 사용하는 것을 권장하지 않습니다. 이러한 기능은 향후 제품 기능에 대한 조기 액세스를 제공하므로 고객은 개발 프로세스 중에 기능을 테스트하고 피드백을 제공할 수 있습니다.
+* 현재 오픈시프트 가상화는 주로 베어 메탈 물리서버, 일반적으로 온프레미스 또는 전용 호스팅에서 지원됩니다. 오늘 실습 환경에서 사용하고 있는 장비는 Equinix에 배포된 오픈시프트 클러스터입니다.
+* 온프레미스 베어메탈 서버, Amazon Web Services 베어 메탈 인스턴스, IBM Cloud® Bare Metal Servers를 지원하며, 다른 클라우드 공급업체가 제공하는 베어 메탈 인스턴스나 서버는 지원되지 않습니다.
 <br>
 
 ### 1.2 오픈시프트 가상화 요구 사항
@@ -40,22 +36,23 @@
   + Red Hat Enterprise Linux(RHEL) 8 이상에서 지원됨
   + Intel 64 또는 AMD64 CPU 확장 지원
   + Intel VT 또는 AMD-V 하드웨어 가상화 확장이 활성화됨
-  + NX(실행 없음) 플래그가 활성화
-* 저장 요구사항
-  + 오픈시프트에서 지원됨
-  + CSI 제공자를 적극 권장
+  + NX(no execute) 플래그가 활성화됨
+* 스토리지 요구사항
+  + 오픈시프트에서 지원되는 스토리지
+  + CSI 프로비저너를 통해 제공되는 PVC 사용 적극 권장
   + 실시간 마이그레이션에는 ReadWriteMany(RWX) PVC가 필요
-  + CSI 클론 또는 스냅샷을 통해 가속화된 볼륨 생성을 지원하는 CSI 프로비저너를 사용하면 템플릿에서 가상머신을 훨씬 빠르게 생성 가능
-  + CSI 프로비저너를 사용할 수 없는 경우 오픈시프트 가상화는 호스트 복사본을 사용하도록 대체
+  + CSI 클론 또는 스냅샷을 지원하는 CSI 프로비저너를 사용하면 가속화된 볼륨 생성을 통해 템플릿에서 가상머신을 훨씬 빠르게 생성 가능
+  + CSI 프로비저너를 사용할 수 없는 경우 오픈시프트 가상화는 hostpath를 사용하도록 대체함
+  + Block 볼륨 모드 권장 (Filesystem 볼륨 모드는 VM 디스크 스토리지에 필요하지 않은 더 많은 스토리지 계층을 사용)
 * 오픈시프트 클러스터 노드 요구 사항
-  + 작업자 노드에 설치된 RHCOS(Red Hat Enterprise Linux CoreOS)
+  + worker 노드에 설치된 RHCOS(Red Hat Enterprise Linux CoreOS)
   + 가상 머신 워크로드를 호스팅하기에 충분한 CPU, 메모리 및 네트워크 용량
 
-오픈시프트 가상화의 하드웨어에 대한 특정 요구 사항 및 지침에 대한 [문서](https://docs.openshift.com/container-platform/4.15/virt/install/preparing-cluster-for-virt.html)를 검토하세요.
+오픈시프트 가상화의 하드웨어에 대한 특정 요구 사항 및 지침에 대한 [문서](https://docs.openshift.com/container-platform/4.16/virt/install/preparing-cluster-for-virt.html)를 검토하세요.
 <br>
 
 > [!NOTE]
-> 클러스터가 서로 다른 CPU를 갖춘 워커 노드를 사용하는 경우 Intel과 AMD는 CPU마다 성능이 다르기 때문에 라이브 마이그레이션 실패가 발생할 수 있습니다.
+> 클러스터의 worker 노드가 서로 다른 CPU를 사용하는 경우, CPU마다 CPU feature가 다르기 때문에 라이브 마이그레이션에 실패할 수 있습니다.
 <br>
 <br>
 
@@ -98,7 +95,8 @@ IPI(Installer Provisioned Infrastructure) 방법을 사용하여 배포할 때 �
 
 레드햇 오픈시프트와의 거의 모든 상호 작용은 오픈시프트 콘솔에서 수행될 수 있습니다. 콘솔은 관리자와 사용자 모두가 안내 방식으로 플랫폼을 사용할 수 있도록 하는 모든 기능을 갖춘 웹 애플리케이션입니다. 시스템을 쉽게 관리할 수 있도록 대부분의 작업에 마법사가 제공됩니다.
 
-1. 오픈시트프 콘솔 URL로 이동하여 사용자 admin과 비밀번호 %openshift_password%로 로그인합니다.
+1. 오픈시트프 콘솔 URL로 이동하여 사용자 user1과 워크샵 진행자가 제공한 비밀번호로 로그인합니다.
+(아래와 같은 형식으로 적힌 주소를 클릭하시면 됩니다.)
 
    ```
    https://console-openshift-console.apps.${GUID}.dynamic.redhatworkshops.io/
